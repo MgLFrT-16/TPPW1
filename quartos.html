@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KMT Hotel</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./css/listarquartos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+
+  <header>
+    <div class="content flex_space">
+      <div class="logo">
+        <h1>KMT HOTEL</h1>
+      </div>
+      <div class="navlinks">
+        <ul id="menulist">
+          <li><a href="index.html">Home</a> </li>
+          <li><a href="">Quartos</a> </li>
+          <li><a href="reservas.html">Reservas/Tarifas</a> </li>
+          <li><a href="anulacao.html">Reservas Anuladas</a> </li>
+          <li><a href="gestao.html">Informação Gestão</a> </li>
+        </ul>
+        <span class="fa fa-bars" onclick="menutoggle()"></span>
+      </div>
+    </div>
+  </header>
+
+
+  <script>
+    var menulist = document.getElementById('menulist');
+    menulist.style.maxHeight = "0px";
+
+    function menutoggle() {
+      if (menulist.style.maxHeight == "0px") {
+        menulist.style.maxHeight = "100vh";
+      } else {
+        menulist.style.maxHeight = "0px";
+      }
+    }
+  </script>
+
+<section class="rooms">
+    <div class="container top">
+      <div class="heading">
+        <h1>Reserve</h1>
+        <h2>Nossos Quartos</h2>
+        <br>
+      </div>
+      <div class="content">
+          <div class="items">
+            <div class="image">
+              <img src="images/room-1.png" alt="">
+            </div>
+            <div class="text">
+              <h2>City Room</h2>
+              <div class="rate flex">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <h2>2 Hóspedes | 1 Casal | 32 m²</h2>
+              <br>
+              <div class="button flex">
+                <button class="primary-btn" id="reservarBtn1">Reservar</button>
+                <h3>Desde 128 € <span> <br> Por Noite </span> </h3>
+              </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="image">
+              <img src="images/room-2.png" alt="">
+            </div>
+            <div class="text">
+              <h2>Cosy Room</h2>
+              <div class="rate flex">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <h2>2 Hóspedes | 1 Casal | 18 m²</h2>
+              <br>
+              <div class="button flex">
+                <button class="primary-btn" id="reservarBtn2">Reservar</button>
+                <h3>Desde 133 € <span> <br> Por Noite </span> </h3>
+              </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="image">
+              <img src="images/room-3.png" alt="">
+            </div>
+            <div class="text">
+              <h2>Ocean Room</h2>
+              <div class="rate flex">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <h2>3 Hóspedes| 2 Camas | 30 m²</h2>
+              <br>
+              <div class="button flex">
+                <button class="primary-btn" id="reservarBtn3">Reservar</button>
+                <h3>Desde 143 € <span> <br> Por Noite </span> </h3>
+              </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="image">
+              <img src="images/room-4.png" alt="">
+            </div>
+            <div class="text">
+              <h2>City Junior Suite</h2>
+              <div class="rate flex">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <h2>4 Hóspedes | 3 Camas | 36 m²</h2>
+              <br>
+              <div class="button flex">
+                <button class="primary-btn" id="reservarBtn4">Reservar</button>
+                <h3>Desde 190 € <span> <br> Por Noite </span> </h3>
+              </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="image">
+              <img src="images/room-5.png" alt="">
+            </div>
+            <div class="text">
+              <h2>Ocean Studio</h2>
+              <div class="rate flex">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <h2>5 Hóspedes | 4 Camas | 39 m²</h2>
+              <br>
+              <div class="button flex">
+                <button class="primary-btn" id="reservarBtn5">Reservar</button>
+                <h3>Desde 204 € <span> <br> Por Noite </span> </h3>
+              </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="image">
+              <img src="images/room-6.png" alt="">
+            </div>
+            <div class="text">
+              <h2>Ocean Junior Suite</h2>
+              <div class="rate flex">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <h2>6 Hóspedes | 3 Camas | 43 m² </h2>
+              <br>
+              <div class="button flex">
+                <button class="primary-btn" id="reservarBtn6">Reservar</button>
+                <h3>Desde 250 € <span> <br> Por Noite </span> </h3>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <script>
+      document.getElementById("reservarBtn1").addEventListener("click", function() {
+        window.location.href = "reservarquarto1.html";
+      });
+      document.getElementById("reservarBtn2").addEventListener("click", function() {
+        window.location.href = "reservarquarto2.html";
+      });
+      document.getElementById("reservarBtn3").addEventListener("click", function() {
+        window.location.href = "reservarquarto3.html";
+      });
+      document.getElementById("reservarBtn4").addEventListener("click", function() {
+        window.location.href = "reservarquarto4.html";
+      });
+      document.getElementById("reservarBtn5").addEventListener("click", function() {
+        window.location.href = "reservarquarto5.html";
+      });
+      document.getElementById("reservarBtn6").addEventListener("click", function() {
+        window.location.href = "reservarquarto6.html";
+      });
+    </script>
+    </body>
+    </html>
+  <br>
+  <br>
+  <div class="legal">
+    <h1 class="container">KMT HOTEL</h1>
+  </div>
+  
+
+
+
+  <script src="https://kit.fontawesome.com/032d11eac3.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

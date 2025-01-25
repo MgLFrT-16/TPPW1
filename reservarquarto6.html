@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KMT Hotel</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+  <!-- Custom stlylesheet -->
+  <link type="text/css" rel="stylesheet" href="css/styler6.css" />
+
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css"
+    integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./css/listarquartos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+  <!-- Adicione o link para o jQuery UI -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<style>
+  /* Adicione estilos para dias bloqueados */
+  .calendario-dia-ocupado {
+    background-color: #FFC0CB; /* Cor de fundo para identificar dias bloqueados */
+  }
+</style>
+
+<body>
+  <header>
+    <div class="content flex_space">
+      <div class="logo">
+        <h1>KMT HOTEL</h1>
+      </div>
+      <div class="navlinks">
+        <ul id="menulist">
+          <li><a href="index.html">Home</a> </li>
+          <li><a href="quartos.html">Quartos</a> </li>
+          <li><a href="reservas.html">Reservas/Tarifas</a> </li>
+          <li><a href="anulacao.html">Reservas Anuladas</a> </li>
+          <li><a href="gestao.html">Informação Gestão</a> </li>
+        </ul>
+        <span class="fa fa-bars" onclick="menutoggle()"></span>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    var menulist = document.getElementById('menulist');
+    menulist.style.maxHeight = "0px";
+
+    function menutoggle() {
+      if (menulist.style.maxHeight == "0px") {
+        menulist.style.maxHeight = "100vh";
+      } else {
+        menulist.style.maxHeight = "0px";
+      }
+    }
+  </script>
+
+  <div id="booking" class="section">
+    <div class="section-center">
+      <div class="container">
+        <div class="row">
+          <div class="booking-form">
+            <div class="booking-bg"></div>
+            <form>
+              <div class="form-header">
+                <h2>Reservar Quarto Ocean Junior Suite</h2>
+              </div>
+              <div class="form-group" hidden>
+                <span class="form-label">Quarto</span>
+                <input id="quartoInput" class="form-control" type="text" placeholder="Ocean Junior Suite" style="display: none;">
+                <p id="quartoLabel">Ocean Junior Suite</p>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <span class="form-label">Adultos</span>
+                    <select id="inputAdultos" class="form-control" onchange="calcularPreco()">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                    </select>
+                    <span class="select-arrow"></span>
+                  </div>
+                  <div class="form-group">
+                    <span class="form-label">Criança</span>
+                    <select id="inputCriancas" class="form-control" onchange="calcularPreco()">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                    <span class="select-arrow"></span>
+                  </div>
+                  <div class="form-group">
+                    <span class="form-label">Ofertas</span>
+                    <select id="inputOferta" class="form-control" onchange="calcularPreco()">
+                      <option value="250 € pequeno almoço">250 € pequeno almoço</option>
+                      <option value="274 € credito comida e bebida incluido">274 € credito comida e bebida incluido</option>
+                    </select>
+                    <span class="select-arrow"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <span for="inputCheckIn" class="form-label">Check In</span>
+                    <input id="inputCheckIn" class="form-control" type="date" readonly required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <span for="inputCheckOut" class="form-label">Check Out</span>
+                    <input id="inputCheckOut" class="form-control" type="date" readonly required>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <span  for="inputNome"class="form-label">Nome Completo</span>
+                <input id="inputNome" class="form-control" type="text" placeholder="">
+              </div>
+              <div class="form-group">
+                <span for="inputEmail"class="form-label">Email</span>
+                <input id="inputEmail" class="form-control" type="email" placeholder="">
+              </div>
+              <div class="form-group">
+                <span for="inputMensagem"class="form-label">Mensagem Adicional</span>
+                <textarea id="inputMensagem" class="form-control" rows="3" placeholder="Alguma solicitação especial?"></textarea>
+
+                <button type="button" class="btn btn-primary" onclick="calcularPreco()">Calcular Preço</button>
+
+                <div id="resultadoPreco" class="mt-4"></div>
+
+                <div class="form-btn">
+                  <button type="button" class="submit-btn" onclick="confirmarReserva()">Reservar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+$(function () {
+  var quartoId = 6; 
+
+  var reservas = JSON.parse(localStorage.getItem('reservas')) || [];
+  var datasBloqueadas = reservas
+    .filter(function (reserva) {
+      return reserva.quartoId === quartoId;
+    })
+    .reduce(function (datas, reserva) {
+      var dataCheckIn = new Date(reserva.checkIn);
+      var dataCheckOut = new Date(reserva.checkOut);
+
+      while (dataCheckIn <= dataCheckOut) {
+        datas.push($.datepicker.formatDate("yy-mm-dd", dataCheckIn));
+        dataCheckIn.setDate(dataCheckIn.getDate() + 1);
+      }
+
+      return datas;
+    }, []);
+
+  function bloquearDatas(date) {
+    var stringData = $.datepicker.formatDate("yy-mm-dd", date);
+    return [datasBloqueadas.indexOf(stringData) === -1];
+  }
+
+  $("#inputCheckIn").datepicker({
+    dateFormat: "yy-mm-dd",
+    minDate: 0,
+    maxDate: new Date(2024, 11, 31), 
+    beforeShowDay: bloquearDatas,
+    onSelect: function (date) {
+      var checkInDate = new Date(date);
+      var checkOutDate = new Date(checkInDate);
+      checkOutDate.setDate(checkOutDate.getDate() + 1);
+
+      $("#inputCheckOut").datepicker("option", "minDate", checkOutDate);
+      $("#inputCheckOut").datepicker("option", "maxDate", new Date(2024, 11, 31)); 
+      $("#inputCheckOut").datepicker("refresh");
+    }
+  });
+
+  $("#inputCheckOut").datepicker({
+    dateFormat: "yy-mm-dd",
+    minDate: 0,
+    maxDate: new Date(2024, 11, 31), 
+    beforeShowDay: bloquearDatas,
+    onSelect: function (date) {
+      var checkOutDate = new Date(date);
+      var checkInDate = new Date(checkOutDate);
+      checkInDate.setDate(checkInDate.getDate() - 1);
+
+      $("#inputCheckIn").datepicker("option", "maxDate", checkInDate);
+      $("#inputCheckIn").datepicker("refresh");
+    }
+  });
+});
+function calcularPreco() {
+  var numAdultos = parseInt(document.getElementById('inputAdultos').value);
+  var dataCheckIn = new Date(document.getElementById('inputCheckIn').value);
+  var dataCheckOut = new Date(document.getElementById('inputCheckOut').value);
+  var ofertaSelecionada = document.getElementById('inputOferta').value;
+
+  var diferencaEmMilissegundos = dataCheckOut.getTime() - dataCheckIn.getTime();
+
+  var diferencaEmDias = Math.ceil(diferencaEmMilissegundos / (1000 * 60 * 60 * 24));
+
+  var precoBase = 250; 
+
+  switch (ofertaSelecionada) {
+    case '250 € pequeno almoço':
+      precoBase = 250; 
+      break;
+    case '274 € credito comida e bebida incluido':
+      precoBase = 274;
+      break;
+  }
+
+  var precoTotal = precoBase * diferencaEmDias;
+
+  document.getElementById('resultadoPreco').innerHTML = '<strong>Preço Total:</strong> ' + precoTotal.toFixed(2) + ' €';
+}
+function confirmarReserva() {
+
+  var quartoSelecionado = {
+    quartoId: 6, 
+    nomeQuarto: document.getElementById('quartoLabel').innerText,
+    nome: document.getElementById('inputNome').value,
+    email: document.getElementById('inputEmail').value,
+    checkIn: document.getElementById('inputCheckIn').value,
+    checkOut: document.getElementById('inputCheckOut').value,
+    adultos: document.getElementById('inputAdultos').value,
+    ofertas: document.getElementById('inputOferta').value,
+    mensagem: document.getElementById('inputMensagem').value,
+    criancas: document.getElementById('inputCriancas') ? document.getElementById('inputCriancas').value : 0,
+    precoTotal: parseFloat(document.getElementById('resultadoPreco').textContent.replace('Preço Total: €', '').trim()) || 0
+  };
+
+  var reservas = JSON.parse(localStorage.getItem('reservas')) || [];
+
+  reservas.push(quartoSelecionado);
+
+  localStorage.setItem('reservas', JSON.stringify(reservas));
+
+  setTimeout(function () {
+    window.location.href = 'reservas.html';
+  }, 500);
+}
+
+    var reservas = JSON.parse(localStorage.getItem('reservas')) || [];
+
+    function verificarNumeroAdultos() {
+  var numAdultos = parseInt(document.getElementById('inputAdultos').value);
+  var selectCriancas = document.getElementById('inputCriancas');
+
+  var numMaxCriancas = 6 - numAdultos;
+
+  selectCriancas.innerHTML = ''; 
+
+  for (var i = 0; i <= numMaxCriancas; i++) {
+    var option = document.createElement('option');
+    option.value = i;
+    option.text = i.toString();
+    selectCriancas.add(option);
+  }
+
+  if (selectCriancas.value > numMaxCriancas) {
+    selectCriancas.value = 0;
+  }
+
+  if (numAdultos < 2) {
+    document.getElementById('inputAdultos').value = 2;
+    verificarNumeroAdultos();
+  }
+}
+
+document.getElementById('inputAdultos').addEventListener('change', verificarNumeroAdultos);
+
+verificarNumeroAdultos();
+  </script>
+
+  <div class="legal">
+    <h1 class="container">KMT HOTEL</h1>
+  </div>
+
+  <script src="https://kit.fontawesome.com/032d11eac3.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

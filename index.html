@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KMT Hotel</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+  <header>
+    <div class="content flex_space">
+      <div class="logo">
+        <h1>KMT HOTEL</h1>
+      </div>
+      <div class="navlinks">
+        <ul id="menulist">
+          <li><a href="">Home</a> </li>
+          <li><a href="quartos.html">Quartos</a> </li>
+          <li><a href="reservas.html">Reservas/Tarifas</a> </li>
+          <li><a href="anulacao.html">Reservas Anuladas</a> </li>
+          <li><a href="gestao.html">Informação Gestão</a> </li>
+        </ul>
+        <span class="fa fa-bars" onclick="menutoggle()"></span>
+      </div>
+    </div>
+  </header>
+
+
+  <script>
+    var menulist = document.getElementById('menulist');
+    menulist.style.maxHeight = "0px";
+
+    function menutoggle() {
+      if (menulist.style.maxHeight == "0px") {
+        menulist.style.maxHeight = "100vh";
+      } else {
+        menulist.style.maxHeight = "0px";
+      }
+    }
+  </script>
+
+
+  <section class="home">
+    <div class="content">
+      <div class="owl-carousel owl-theme">
+        <div class="item">
+          <img src="images/banner-1.png" alt="">
+          <div class="text">
+            <h1>KMT HOTEL</h1>
+            <p>Bem-vindo a uma experiência local com feelings internacionais.
+            </p>
+            <div class="flex">
+              <button class="primary-btn" onclick="redirecionarParaQuartos()">Reservar Agora</button>
+            </div>
+            
+            <script>
+              function redirecionarParaQuartos() {
+                window.location.href = 'quartos.html';
+              }
+            </script>
+          </div>
+        </div>
+        <div class="item">
+          <img src="images/banner-2.png" alt="">
+          <div class="text">
+            <h1>KMT HOTEL</h1>
+            <p>Para. Olha. Ouve. Experimenta algo novo. Escreve a tua história. 
+            </p>
+            <div class="flex">
+              <button class="primary-btn" onclick="redirecionarParaQuartos()">Reservar Agora</button>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="images/banner-3.png" alt="">
+          <div class="text">
+            <h1>KMT HOTEL</h1>
+            <p>Carrega no botão de reiniciar, deixa que o calor e a brisa atlântica te deem as boas-vindas.
+            </p>
+            <div class="flex">
+              <button class="primary-btn" onclick="redirecionarParaQuartos()">Reservar Agora</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+  <script>
+    $('.owl-carousel').owlCarousel({
+      loop: true,
+      margin: 0,
+      nav: true,
+      dots: false,
+      navText: ["<i class = 'fa fa-chevron-left'></i>", "<i class = 'fa fa-chevron-right'></i>"],
+      responsive: {
+        0: {
+          items: 1
+        },
+        768: {
+          items: 1
+        },
+        1000: {
+          items: 1
+        }
+      }
+    })
+  </script>
+
+
+  <section class="about top">
+    <div class="container flex">
+      <div class="left">
+        <div class="heading">
+          <h1>Bem-Vindo</h1>
+          <h2>KMT Hotel</h2>
+        </div>
+        <p>Com uma localização conveniente no Funchal, KMT HOTEL fornece quartos com ar condicionado, uma piscina exterior, acesso Wi-Fi gratuito e um centro de fitness. As comodidades deste alojamento incluem um jardim, um terraço e um restaurante. O alojamento apresenta sauna, discoteca e um salão partilhado.</p>
+
+        <p>Os quartos do alojamento dispõem de televisão de ecrã plano com canais por cabo e cofre. Todos os quartos incluem uma casa de banho privativa com chuveiro e produtos de higiene pessoal gratuitos, enquanto alguns quartos estão equipados com uma kitchenette com um frigorífico. No alojamento, cada quarto tem roupa de cama e toalhas.</p>
+          
+          <p>Os idiomas falados na receção aberta 24 horas incluem alemão, inglês, espanhol e francês.</p>
+          
+          <p>KMT HOTEL tem vários pontos de interesse populares nas suas proximidades, incluindo Praia do Almirante Reis, Marina do Funchal e Casino da Madeira. O aeroporto mais próximo é o Aeroporto Internacional da Madeira - Cristiano Ronaldo, que fica a 20 km de KMT HOTEL.</p>
+      </div>
+      <div class="right">
+        <img src="images/about.png" alt="">
+      </div>
+    </div>
+  </section>
+
+
+  <section class="rooms">
+    <div class="container top">
+      <div class="heading">
+        <h1>EXPLORE</h1>
+        <h2>Nossos Quartos</h2>
+        <br>
+      </div>
+
+      <div class="content mtop">
+        <div class="owl-carousel owl-carousel1 owl-theme">
+          <div class="items">
+            <div class="image">
+              <img src="images/room-1.png" alt="">
+            </div>
+            <div class="text">
+              <h2>City Room</h2>
+              <div class="rate flex">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <h2>2 Hóspedes | 1 Casal | 32 m²</h2>
+              <br>
+              <div class="button flex">
+                <button class="primary-btn" id="reservarBtn1">Reservar</button>
+                <h3>Desde 128 € <span> <br> Por Noite </span> </h3>
+              </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="image">
+              <img src="images/room-2.png" alt="">
+            </div>
+            <div class="text">
+              <h2>Cosy Room</h2>
+              <div class="rate flex">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <h2>2 Hóspedes | 1 Casal | 18 m²</h2>
+              <br>
+              <div class="button flex">
+                <button class="primary-btn" id="reservarBtn2">Reservar</button>
+                <h3>Desde 133 € <span> <br> Por Noite </span> </h3>
+              </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="image">
+              <img src="images/room-3.png" alt="">
+            </div>
+            <div class="text">
+              <h2>Ocean Room</h2>
+              <div class="rate flex">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <h2>3 Hóspedes| 2 Camas | 30 m²</h2>
+              <br>
+              <div class="button flex">
+                <button class="primary-btn" id="reservarBtn3">Reservar</button>
+                <h3>Desde 143 € <span> <br> Por Noite </span> </h3>
+              </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="image">
+              <img src="images/room-4.png" alt="">
+            </div>
+            <div class="text">
+              <h2>City Junior Suite</h2>
+              <div class="rate flex">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <h2>4 Hóspedes | 3 Camas | 36 m²</h2>
+              <br>
+              <div class="button flex">
+                <button class="primary-btn" id="reservarBtn4">Reservar</button>
+                <h3>Desde 190 € <span> <br> Por Noite </span> </h3>
+              </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="image">
+              <img src="images/room-5.png" alt="">
+            </div>
+            <div class="text">
+              <h2>Ocean Studio</h2>
+              <div class="rate flex">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <h2>5 Hóspedes | 4 Camas | 39 m²</h2>
+              <br>
+              <div class="button flex">
+                <button class="primary-btn" id="reservarBtn5">Reservar</button>
+                <h3>Desde 204 € <span> <br> Por Noite </span> </h3>
+              </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="image">
+              <img src="images/room-6.png" alt="">
+            </div>
+            <div class="text">
+              <h2>Ocean Junior Suite</h2>
+              <div class="rate flex">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <h2>6 Hóspedes | 3 Camas | 43 m² </h2>
+              <br>
+              <div class="button flex">
+                <button class="primary-btn" id="reservarBtn6">Reservar</button>
+                <h3>Desde 250 € <span> <br> Por Noite </span> </h3>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    // Script para redirecionar ao clicar no botão
+    document.getElementById("reservarBtn1").addEventListener("click", function() {
+      window.location.href = "reservarquarto1.html";
+    });
+    document.getElementById("reservarBtn2").addEventListener("click", function() {
+      window.location.href = "reservarquarto2.html";
+    });
+    document.getElementById("reservarBtn3").addEventListener("click", function() {
+      window.location.href = "reservarquarto3.html";
+    });
+    document.getElementById("reservarBtn4").addEventListener("click", function() {
+      window.location.href = "reservarquarto4.html";
+    });
+    document.getElementById("reservarBtn5").addEventListener("click", function() {
+      window.location.href = "reservarquarto5.html";
+    });
+    document.getElementById("reservarBtn6").addEventListener("click", function() {
+      window.location.href = "reservarquarto6.html";
+    });
+  </script>
+  <script>
+    $('.owl-carousel1').owlCarousel({
+      loop: true,
+      margin: 40,
+      nav: true,
+      dots: false,
+      navText: ["<i class = 'fa fa-chevron-left'></i>", "<i class = 'fa fa-chevron-right'></i>"],
+      responsive: {
+        0: {
+          items: 1
+        },
+        768: {
+          items: 2,
+          margin: 10,
+        },
+        1000: {
+          items: 3
+        }
+      }
+    })
+  </script>
+
+
+
+  <section class="gallery">
+    <div class="container top">
+      <div class="heading">
+        <h1>Fotos</h1>
+        <h2>Galeria</h2>
+        <br>
+      </div>
+    </div>
+
+    <div class="content mtop">
+      <div class="owl-carousel owl-carousel1 owl-theme">
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-1.png">
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-2.png" alt="">
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-3.png" alt="">
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-4.png" alt="">
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-5.png" alt="">
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-6.png" alt="">
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-4.png" alt="">
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-3.png" alt="">
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-1.png" alt="">
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-6.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script>
+    $('.owl-carousel1').owlCarousel({
+      loop: true,
+      margin: 0,
+      nav: true,
+      dots: false,
+      autoplay: true,
+      autoplayTimeout: 1000,
+      autoplayHoverPause: true,
+      navText: ["<i class = 'fa fa-chevron-left'></i>", "<i class = 'fa fa-chevron-right'></i>"],
+      responsive: {
+        0: {
+          items: 1
+        },
+        768: {
+          items: 4,
+        },
+        1000: {
+          items: 6
+        }
+      }
+    })
+  </script>
+
+
+  <section class="services top">
+    <div class="container">
+      <div class="heading">
+        <h1>OS NOSSOS</h1>
+        <h2>SERVIÇOS</h2>
+      </div>
+
+
+      <div class="content flex_space">
+        <div class="left grid2">
+          <div class="box">
+            <div class="text">
+              <i class="fa-solid fa-champagne-glasses"></i>
+              <h3>Bar</h3>
+            </div>
+          </div>
+          <div class="box">
+            <div class="text">
+              <i class="fa-solid fa-person-biking"></i>
+              <h3>Ginásio</h3>
+            </div>
+          </div>
+          <div class="box">
+            <div class="text">
+              <i class="fa-solid fa-utensils"></i>
+              <h3>Restaurante</h3>
+            </div>
+          </div>
+          <div class="box">
+            <div class="text">
+              <i class="fa-solid fa-spa"></i>
+              <h3>Spa</h3>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <img src="images/service.png" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+  <div class="legal">
+    <h1 class="container">KMT HOTEL</h1>
+  </div>
+
+
+
+  <script src="https://kit.fontawesome.com/032d11eac3.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

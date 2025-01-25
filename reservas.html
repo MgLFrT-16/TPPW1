@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservas</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/listarquartos.css">
+  <link rel="stylesheet" href="./css/reservas.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+  <header>
+    <div class="content flex_space">
+      <div class="logo">
+        <h1>KMT HOTEL</h1>
+      </div>
+      <div class="navlinks">
+        <ul id="menulist">
+          <li><a href="index.html">Home</a> </li>
+          <li><a href="quartos.html">Quartos</a> </li>
+          <li><a href="">Reservas/Tarifas</a> </li>
+          <li><a href="anulacao.html">Reservas Anuladas</a> </li>
+          <li><a href="gestao.html">Informação Gestão</a> </li>
+        </ul>
+        <span class="fa fa-bars" onclick="menutoggle()"></span>
+      </div>
+    </div>
+  </header>
+
+
+  <script>
+    var menulist = document.getElementById('menulist');
+    menulist.style.maxHeight = "0px";
+
+    function menutoggle() {
+      if (menulist.style.maxHeight == "0px") {
+        menulist.style.maxHeight = "100vh";
+      } else {
+        menulist.style.maxHeight = "0px";
+      }
+    }
+  </script>
+<body>
+  <br>
+
+  <div class="container">
+    <h2 class="text-center mb-4">Reservas</h2>
+
+    <div id="exibirReservas"></div>
+  </div>
+
+  <script src="https://momentjs.com/downloads/moment.min.js"></script>
+
+<script>
+  var reservas = JSON.parse(localStorage.getItem('reservas')) || [];
+
+  var exibirReservasDiv = document.getElementById('exibirReservas');
+  if (reservas.length > 0) {
+    exibirReservasDiv.innerHTML = '<h3>Reservas:</h3>';
+    reservas.forEach(function (reserva, index) {
+      var status = calcularStatusReserva(reserva);
+
+      exibirReservasDiv.innerHTML += '<div class="card mb-3">';
+      exibirReservasDiv.innerHTML += '<div class="card-body">';
+      exibirReservasDiv.innerHTML += '<h5 class="card-title">Reserva #' + (index + 1) + ' <span class="badge badge-' + status.classe + '">' + status.texto + '</span></h5>';
+      exibirReservasDiv.innerHTML += '<p><strong>Quarto:</strong> ' + reserva.nomeQuarto + '</p>';
+      exibirReservasDiv.innerHTML += '<p><strong>Nome:</strong> ' + reserva.nome + '</p>';
+      exibirReservasDiv.innerHTML += '<p><strong>Email:</strong> ' + reserva.email + '</p>';
+      exibirReservasDiv.innerHTML += '<p><strong>Check-In:</strong> ' + moment(reserva.checkIn).format('DD/MM/YYYY') + '</p>';
+      exibirReservasDiv.innerHTML += '<p><strong>Check-Out:</strong> ' + moment(reserva.checkOut).format('DD/MM/YYYY') + '</p>';
+      exibirReservasDiv.innerHTML += '<p><strong>Adultos:</strong> ' + reserva.adultos + '</p>';
+      exibirReservasDiv.innerHTML += '<p><strong>Crianças:</strong> ' + reserva.criancas + '</p>';
+      exibirReservasDiv.innerHTML += '<p><strong>Mensagem:</strong> ' + reserva.mensagem + '</p>';
+      exibirReservasDiv.innerHTML += '<p><strong>Preço Total:</strong> €' + reserva.precoTotal.toFixed(2) + '</p>';
+      exibirReservasDiv.innerHTML += '<button class="btn btn-danger" onclick="anularReserva(' + index + ')">Anular Reserva</button>';
+      exibirReservasDiv.innerHTML += '</div>';
+      exibirReservasDiv.innerHTML += '</div>';
+    });
+  } else {
+    exibirReservasDiv.innerHTML = '<p>Nenhuma reserva encontrada.</p>';
+  }
+
+    function calcularStatusReserva(reserva) {
+      var status = {
+        classe: 'secondary',
+        texto: 'Ainda Não Começou'
+      };
+
+      var hoje = new Date();
+      var dataCheckIn = new Date(reserva.checkIn);
+      var dataCheckOut = new Date(reserva.checkOut);
+
+      if (hoje < dataCheckIn) {
+        status = {
+          classe: 'success',
+          texto: 'Ainda Não Começou'
+        };
+      } else if (hoje >= dataCheckIn && hoje <= dataCheckOut) {
+        status = {
+          classe: 'primary',
+          texto: 'A Decorrer'
+        };
+      } else if (hoje > dataCheckOut) {
+        status = {
+          classe: 'danger',
+          texto: 'Acabou'
+        };
+      }
+
+      return status;
+    }
+
+    function anularReserva(index) {
+      var reservaAnulada = reservas.splice(index, 1)[0];
+
+      localStorage.setItem('reservas', JSON.stringify(reservas));
+
+      localStorage.setItem('reservaAnulada', JSON.stringify(reservaAnulada));
+      window.location.href = 'anulacao.html';
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anulação de Reserva</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/listarquartos.css">
+  <link rel="stylesheet" href="./css/reservas.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+  <header>
+    <div class="content flex_space">
+      <div class="logo">
+        <h1>KMT HOTEL</h1>
+      </div>
+      <div class="navlinks">
+        <ul id="menulist">
+          <li><a href="index.html">Home</a> </li>
+          <li><a href="quartos.html">Quartos</a> </li>
+          <li><a href="">Reservas/Tarifas</a> </li>
+          <li><a href="anulacao.html">Reservas Anuladas</a> </li>
+          <li><a href="gestao.html">Informação Gestão</a> </li>
+        </ul>
+        <span class="fa fa-bars" onclick="menutoggle()"></span>
+      </div>
+    </div>
+  </header>
+
+
+  <script>
+    var menulist = document.getElementById('menulist');
+    menulist.style.maxHeight = "0px";
+
+    function menutoggle() {
+      if (menulist.style.maxHeight == "0px") {
+        menulist.style.maxHeight = "100vh";
+      } else {
+        menulist.style.maxHeight = "0px";
+      }
+    }
+  </script>
+<body>
+
+  <div class="container">
+    <h2 class="text-center mb-4">Anulação de Reserva</h2>
+
+    <div id="exibirAnulacao"></div>
+  </div>
+
+  <script>
+    function obterReservaAnulada() {
+      var reservaAnulada = JSON.parse(localStorage.getItem('reservaAnulada')) || {};
+
+      var exibirAnulacaoDiv = document.getElementById('exibirAnulacao');
+      if (reservaAnulada && Object.keys(reservaAnulada).length > 0) {
+        exibirAnulacaoDiv.innerHTML += '<div class="card mb-3">';
+        exibirAnulacaoDiv.innerHTML += '<div class="card-body">';
+        exibirAnulacaoDiv.innerHTML += '<h5 class="card-title">Reserva Anulada</h5>';
+        exibirAnulacaoDiv.innerHTML += '<p><strong>Quarto:</strong> ' + reservaAnulada.nomeQuarto + '</p>';
+        exibirAnulacaoDiv.innerHTML += '<p><strong>Nome:</strong> ' + reservaAnulada.nome + '</p>';
+        exibirAnulacaoDiv.innerHTML += '<p><strong>Email:</strong> ' + reservaAnulada.email + '</p>';
+        exibirAnulacaoDiv.innerHTML += '<p><strong>Check-In:</strong> ' + reservaAnulada.checkIn + '</p>';
+        exibirAnulacaoDiv.innerHTML += '<p><strong>Check-Out:</strong> ' + reservaAnulada.checkOut + '</p>';
+        exibirAnulacaoDiv.innerHTML += '<p><strong>Adultos:</strong> ' + reservaAnulada.adultos + '</p>';
+        exibirAnulacaoDiv.innerHTML += '<p><strong>Crianças:</strong> ' + reservaAnulada.criancas + '</p>';
+        exibirAnulacaoDiv.innerHTML += '<p><strong>Mensagem:</strong> ' + reservaAnulada.mensagem + '</p>';
+        exibirAnulacaoDiv.innerHTML += '<p><strong>Preço Total:</strong> $' + reservaAnulada.precoTotal.toFixed(2) + '</p>';
+        exibirAnulacaoDiv.innerHTML += '</div>';
+        exibirAnulacaoDiv.innerHTML += '</div>';
+      } else {
+        exibirAnulacaoDiv.innerHTML = '<p>Nenhuma informação de reserva encontrada para anulação.</p>';
+      }
+    }
+    
+    obterReservaAnulada();
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

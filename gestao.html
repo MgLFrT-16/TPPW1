@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Reservas</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/listarquartos.css">
+  <link rel="stylesheet" href="./css/reservas.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+   <header>
+    <div class="content flex_space">
+      <div class="logo">
+        <h1>KMT HOTEL</h1>
+      </div>
+      <div class="navlinks">
+        <ul id="menulist">
+          <li><a href="index.html">Home</a> </li>
+          <li><a href="quartos.html">Quartos</a> </li>
+          <li><a href="reservas.html">Reservas/Tarifas</a> </li>
+          <li><a href="anulacao.html">Reservas Anuladas</a> </li>
+          <li><a href="">Informação Gestão</a> </li>
+        </ul>
+        <span class="fa fa-bars" onclick="menutoggle()"></span>
+      </div>
+    </div>
+  </header>
+<br>
+
+  <script>
+    var menulist = document.getElementById('menulist');
+    menulist.style.maxHeight = "0px";
+
+    function menutoggle() {
+      if (menulist.style.maxHeight == "0px") {
+        menulist.style.maxHeight = "100vh";
+      } else {
+        menulist.style.maxHeight = "0px";
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <div class="container">
+    <h2 class="text-center mb-4">Gestão de Reservas</h2>
+
+    <div id="exibirGestao"></div>
+  </div>
+
+  <script>
+    var reservas = JSON.parse(localStorage.getItem('reservas')) || [];
+
+    function filtrarReservasPorMes(mes) {
+      return reservas.filter(function (reserva) {
+        var mesReserva = new Date(reserva.checkIn).getMonth() + 1; 
+        return mesReserva === mes;
+      });
+    }
+
+    var exibirGestaoDiv = document.getElementById('exibirGestao');
+    if (reservas.length > 0) {
+      var tableHtml = '';
+      var totalAnual = 0;
+
+      for (var mes = 1; mes <= 12; mes++) {
+        var reservasDoMes = filtrarReservasPorMes(mes);
+
+        if (reservasDoMes.length > 0) {
+          var nomeMes = new Date(2022, mes - 1, 1).toLocaleString('pt-BR', { month: 'long' });
+
+          tableHtml += '<h3>Informações de Gestão - ' + nomeMes + ':</h3>';
+          tableHtml += '<table class="table">';
+          tableHtml += '<thead>';
+          tableHtml += '<tr>';
+          tableHtml += '<th scope="col">#</th>';
+          tableHtml += '<th scope="col">Nome do Quarto</th>';
+          tableHtml += '<th scope="col">Check-In</th>';
+          tableHtml += '<th scope="col">Check-Out</th>';
+          tableHtml += '<th scope="col">Preço Total</th>';
+          tableHtml += '</tr>';
+          tableHtml += '</thead>';
+          tableHtml += '<tbody>';
+
+          var totalMes = 0;
+
+          reservasDoMes.forEach(function (reserva, index) {
+            tableHtml += '<tr>';
+            tableHtml += '<th scope="row">' + (index + 1) + '</th>';
+            tableHtml += '<td>' + reserva.nomeQuarto + '</td>';
+            tableHtml += '<td>' + reserva.checkIn + '</td>';
+            tableHtml += '<td>' + reserva.checkOut + '</td>';
+            tableHtml += '<td>' + reserva.precoTotal.toFixed(2) + ' €</td>';
+            tableHtml += '</tr>';
+
+            totalMes += reserva.precoTotal;
+          });
+
+          tableHtml += '<tr>';
+          tableHtml += '<th colspan="4" class="text-right">Total do Mês:</th>';
+          tableHtml += '<td>' + totalMes.toFixed(2) + ' €</td>';
+          tableHtml += '</tr>';
+
+          tableHtml += '</tbody>';
+          tableHtml += '</table>';
+
+          totalAnual += totalMes;
+        }
+      }
+
+      tableHtml += '<h3>Total Anual:</h3>';
+      tableHtml += '<p>' + totalAnual.toFixed(2) + ' €</p>';
+
+      exibirGestaoDiv.innerHTML = tableHtml;
+    } else {
+      exibirGestaoDiv.innerHTML = '<p>Nenhuma informação de gestão disponível.</p>';
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
